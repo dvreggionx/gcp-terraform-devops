@@ -1,7 +1,7 @@
 variable "account_id" {
-  description = "ID del Service Account para GKE"
+  description = "Service Account ID for GKE"
 }
 
 variable "project_id" {
-  description = "El ID del proyecto de GCP"
+  description = "The GCP project ID"
 }
