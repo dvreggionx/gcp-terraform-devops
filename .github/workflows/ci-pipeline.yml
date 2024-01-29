@@ -2,9 +2,9 @@ name: CI Pipeline
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   plan:
@@ -22,9 +22,9 @@ jobs:
         terraform_version: 1.0.0
 
     - name: Setup GCP Credentials
-      run: echo '${{ secrets.GCP_CREDENTIALS }}' > gcp-credentials.json
-      env:
-        GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+      run: |
+        echo "${{ secrets.GCP_CREDENTIALS }}" > gcp-credentials.json
+      shell: bash
 
     - name: Terraform Init
       run: terraform init
@@ -51,9 +51,9 @@ jobs:
         terraform_version: 1.0.0
 
     - name: Setup GCP Credentials
-      run: echo '${{ secrets.GCP_CREDENTIALS }}' > gcp-credentials.json
-      env:
-        GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+      run: |
+        echo "${{ secrets.GCP_CREDENTIALS }}" > gcp-credentials.json
+      shell: bash
 
     - name: Terraform Init
       run: terraform init
