@@ -21,13 +21,20 @@ jobs:
       with:
         terraform_version: 1.0.0
 
+    - name: Setup GCP Credentials
+      run: echo '${{ secrets.GCP_CREDENTIALS }}' > gcp-credentials.json
+      env:
+        GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+
     - name: Terraform Init
       run: terraform init
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/iac/gcp-credentials.json
 
     - name: Terraform Plan
       run: terraform plan
       env:
-        GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/iac/gcp-credentials.json
 
   apply:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -43,10 +50,17 @@ jobs:
       with:
         terraform_version: 1.0.0
 
+    - name: Setup GCP Credentials
+      run: echo '${{ secrets.GCP_CREDENTIALS }}' > gcp-credentials.json
+      env:
+        GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+
     - name: Terraform Init
       run: terraform init
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/iac/gcp-credentials.json
 
     - name: Terraform Apply
       run: terraform apply -auto-approve
       env:
-        GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/iac/gcp-credentials.json

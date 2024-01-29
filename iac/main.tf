@@ -28,7 +28,7 @@ module "mi_gke_cluster" {
   machine_type                        = "e2-small"
   initial_node_count                  = 1
   min_node_count                      = 1
-  max_node_count                      = 1
+  max_node_count                      = 2
   daily_maintenance_window_start_time = "03:00"
   cluster_version                     = "1.27.3-gke.100"
 }
