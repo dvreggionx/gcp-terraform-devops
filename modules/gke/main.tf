@@ -1,10 +1,10 @@
 # main.tf
 
 resource "google_container_cluster" "gke_cluster" {
-  name     = "mi-cluster-gke"
-  location = var.region
-  network  = var.vpc_id
-  subnetwork = var.subnetwork_id
+  name               = "mi-cluster-gke"
+  location           = var.region
+  network            = var.vpc_id
+  subnetwork         = var.subnetwork_id
   min_master_version = var.cluster_version
   ip_allocation_policy {}
 

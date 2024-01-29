@@ -21,18 +21,18 @@ resource "google_compute_subnetwork" "public_subnet_2" {
 
 # Subredes Privadas
 resource "google_compute_subnetwork" "private_subnet_1" {
-  name          = "private-subnet-1"
-  ip_cidr_range = var.private_subnet_1_range
-  region        = var.region
-  network       = google_compute_network.vpc.name
+  name                     = "private-subnet-1"
+  ip_cidr_range            = var.private_subnet_1_range
+  region                   = var.region
+  network                  = google_compute_network.vpc.name
   private_ip_google_access = true
 }
 
 resource "google_compute_subnetwork" "private_subnet_2" {
-  name          = "private-subnet-2"
-  ip_cidr_range = var.private_subnet_2_range
-  region        = var.region
-  network       = google_compute_network.vpc.name
+  name                     = "private-subnet-2"
+  ip_cidr_range            = var.private_subnet_2_range
+  region                   = var.region
+  network                  = google_compute_network.vpc.name
   private_ip_google_access = true
 }
 
